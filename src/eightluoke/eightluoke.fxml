@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eightluoke.Controller">
+    <children>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+       <Label layoutX="60.0" layoutY="130.0" text="开始时间:" />
+       <Label layoutX="60.0" layoutY="160.0" text="结束时间:" />
+       <Label fx:id="table1" layoutX="61.0" layoutY="76.0" text="1号桌" />
+       <Button fx:id="btn1" layoutX="95.0" layoutY="277.0" mnemonicParsing="false" onAction="#onButtonClick1" text="开始计费">
+           <font>
+             <Font size="12.0" />
+           </font>
+       </Button>
+       <Label layoutX="60.0" layoutY="190.0" text="消费时间:" />
+       <Label fx:id="flag1" layoutX="166.0" layoutY="76.0" text="空闲中..." />
+       <Label fx:id="consumptionTime1" layoutX="125.0" layoutY="190.0" text=" " />
+       <Label fx:id="total1" layoutX="127.0" layoutY="241.0" text="0元" />
+       <Label layoutX="60.0" layoutY="240.0" text="消费总额:" />
+       <Label layoutX="60.0" layoutY="215.0" text="其他消费:" />
+       <TextField fx:id="otherCunsum1" layoutX="121.0" layoutY="211.0" onKeyPressed="#numOnly" prefHeight="25.0" prefWidth="64.0" promptText="0" />
+       <TextField fx:id="startTime1" editable="false" layoutX="121.0" layoutY="126.0" prefHeight="25.0" prefWidth="89.0" />
+       <MenuBar fx:id="edit1" layoutX="4.0" layoutY="5.0">
+          <menus>
+              <Menu mnemonicParsing="false" text="编辑">
+                 <items>
+                     <MenuItem mnemonicParsing="false" onAction="#newPage" text="修改费率" />
+                 </items>
+              </Menu>
+          </menus>
+       </MenuBar>
+       <TextField fx:id="endTime1" editable="false" layoutX="121.0" layoutY="156.0" prefHeight="25.0" prefWidth="89.0" />
+       <Label layoutX="188.0" layoutY="216.0" text="元" />
+   </children>
+</Pane>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0">
+         <children>
+            <Label layoutX="60.0" layoutY="130.0" text="开始时间:" />
+            <Label layoutX="60.0" layoutY="160.0" text="结束时间:" />
+            <Label fx:id="table2" layoutX="61.0" layoutY="76.0" text="2号桌" />
+            <Button fx:id="btn2" layoutX="95.0" layoutY="277.0" mnemonicParsing="false" onAction="#onButtonClick2" text="开始计费">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="60.0" layoutY="190.0" text="消费时间:" />
+            <Label fx:id="flag2" layoutX="166.0" layoutY="76.0" text="空闲中..." />
+            <Label fx:id="consumptionTime2" layoutX="125.0" layoutY="190.0" text=" " />
+            <Label fx:id="total2" layoutX="127.0" layoutY="241.0" text="0元" />
+            <Label layoutX="60.0" layoutY="240.0" text="消费总额:" />
+            <Label layoutX="60.0" layoutY="215.0" text="其他消费:" />
+            <TextField fx:id="otherCunsum2" layoutX="121.0" layoutY="211.0" onKeyPressed="#numOnly" prefHeight="25.0" prefWidth="64.0" promptText="0" />
+            <TextField fx:id="startTime2" editable="false" layoutX="121.0" layoutY="126.0" prefHeight="25.0" prefWidth="89.0" />
+            <TextField fx:id="endTime2" editable="false" layoutX="121.0" layoutY="156.0" prefHeight="25.0" prefWidth="89.0" />
+            <Label layoutX="188.0" layoutY="216.0" text="元" />
+         </children>
+      </Pane>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0">
+         <children>
+            <Label layoutX="60.0" layoutY="130.0" text="开始时间:" />
+            <Label layoutX="60.0" layoutY="160.0" text="结束时间:" />
+            <Label fx:id="table3" layoutX="61.0" layoutY="76.0" text="3号桌" />
+            <Button fx:id="btn3" layoutX="95.0" layoutY="277.0" mnemonicParsing="false" onAction="#onButtonClick3" text="开始计费">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="60.0" layoutY="190.0" text="消费时间:" />
+            <Label fx:id="flag3" layoutX="166.0" layoutY="76.0" text="空闲中..." />
+            <Label fx:id="consumptionTime3" layoutX="125.0" layoutY="190.0" text=" " />
+            <Label fx:id="total3" layoutX="127.0" layoutY="241.0" text="0元" />
+            <Label layoutX="60.0" layoutY="240.0" text="消费总额:" />
+            <Label layoutX="60.0" layoutY="215.0" text="其他消费:" />
+            <TextField fx:id="otherCunsum3" layoutX="121.0" layoutY="211.0" onKeyPressed="#numOnly" prefHeight="25.0" prefWidth="64.0" promptText="0" />
+            <TextField fx:id="startTime3" editable="false" layoutX="121.0" layoutY="126.0" prefHeight="25.0" prefWidth="89.0" />
+            <TextField fx:id="endTime3" editable="false" layoutX="121.0" layoutY="156.0" prefHeight="25.0" prefWidth="89.0" />
+            <Label layoutX="188.0" layoutY="216.0" text="元" />
+         </children>
+      </Pane>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0">
+         <children>
+            <Label layoutX="60.0" layoutY="130.0" text="开始时间:" />
+            <Label layoutX="60.0" layoutY="160.0" text="结束时间:" />
+            <Label fx:id="table4" layoutX="61.0" layoutY="76.0" text="4号桌" />
+            <Button fx:id="btn4" layoutX="95.0" layoutY="277.0" mnemonicParsing="false" onAction="#onButtonClick4" text="开始计费">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="60.0" layoutY="190.0" text="消费时间:" />
+            <Label fx:id="flag4" layoutX="166.0" layoutY="76.0" text="空闲中..." />
+            <Label fx:id="consumptionTime4" layoutX="125.0" layoutY="190.0" text=" " />
+            <Label fx:id="total4" layoutX="127.0" layoutY="241.0" text="0元" />
+            <Label layoutX="60.0" layoutY="240.0" text="消费总额:" />
+            <Label layoutX="60.0" layoutY="215.0" text="其他消费:" />
+            <TextField fx:id="otherCunsum4" layoutX="121.0" layoutY="211.0" onKeyPressed="#numOnly" prefHeight="25.0" prefWidth="64.0" promptText="0" />
+            <TextField fx:id="startTime4" editable="false" layoutX="121.0" layoutY="126.0" prefHeight="25.0" prefWidth="89.0" />
+            <TextField fx:id="endTime4" editable="false" layoutX="121.0" layoutY="156.0" prefHeight="25.0" prefWidth="89.0" />
+            <Label layoutX="188.0" layoutY="216.0" text="元" />
+         </children>
+      </Pane>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0">
+         <children>
+            <Label layoutX="60.0" layoutY="130.0" text="开始时间:" />
+            <Label layoutX="60.0" layoutY="160.0" text="结束时间:" />
+            <Label fx:id="table5" layoutX="61.0" layoutY="76.0" text="5号桌" />
+            <Button fx:id="btn5" layoutX="95.0" layoutY="277.0" mnemonicParsing="false" onAction="#onButtonClick5" text="开始计费">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="60.0" layoutY="190.0" text="消费时间:" />
+            <Label fx:id="flag5" layoutX="166.0" layoutY="76.0" text="空闲中..." />
+            <Label fx:id="consumptionTime5" layoutX="125.0" layoutY="190.0" text=" " />
+            <Label fx:id="total5" layoutX="127.0" layoutY="241.0" text="0元" />
+            <Label layoutX="60.0" layoutY="240.0" text="消费总额:" />
+            <Label layoutX="60.0" layoutY="215.0" text="其他消费:" />
+            <TextField fx:id="otherCunsum5" layoutX="121.0" layoutY="211.0" onKeyPressed="#numOnly" prefHeight="25.0" prefWidth="64.0" promptText="0" />
+            <TextField fx:id="startTime5" editable="false" layoutX="121.0" layoutY="126.0" prefHeight="25.0" prefWidth="89.0" />
+            <TextField fx:id="endTime5" editable="false" layoutX="121.0" layoutY="156.0" prefHeight="25.0" prefWidth="89.0" />
+            <Label layoutX="188.0" layoutY="216.0" text="元" />
+         </children>
+      </Pane>
+    </children>
+</HBox>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="300.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eightluoke.EditCotroller">
+   <children>
+      <Label layoutX="42.0" layoutY="40.0" text="1号桌:" />
+      <Label layoutX="42.0" layoutY="80.0" text="2号桌:" />
+      <Label layoutX="42.0" layoutY="120.0" text="3号桌:" />
+      <Label layoutX="42.0" layoutY="160.0" text="4号桌:" />
+      <Label layoutX="42.0" layoutY="200.0" text="5号桌:" />
+      <TextField fx:id="tableOne" layoutX="88.0" layoutY="35.0" prefHeight="25.0" prefWidth="69.0" />
+      <TextField fx:id="tableTwo" layoutX="88.0" layoutY="75.0" prefHeight="25.0" prefWidth="69.0" />
+      <TextField fx:id="tableThree" layoutX="88.0" layoutY="115.0" prefHeight="25.0" prefWidth="69.0" />
+      <TextField fx:id="tableFour" layoutX="88.0" layoutY="155.0" prefHeight="25.0" prefWidth="69.0" />
+      <TextField fx:id="tableFive" layoutX="88.0" layoutY="195.0" prefHeight="25.0" prefWidth="69.0" />
+      <Label layoutX="170.0" layoutY="40.0" text="元" />
+      <Label layoutX="170.0" layoutY="80.0" text="元" />
+      <Label layoutX="170.0" layoutY="120.0" text="元" />
+      <Label layoutX="170.0" layoutY="160.0" text="元" />
+      <Label layoutX="170.0" layoutY="200.0" text="元" />
+      <Button fx:id="confirm" layoutX="40.0" layoutY="248.0" mnemonicParsing="false" onAction="#onClick" text="保存" />
+      <Button fx:id="cancle" layoutX="161.0" layoutY="248.0" mnemonicParsing="false" onAction="#cancle" text="取消" />
+   </children>
+</AnchorPane>
