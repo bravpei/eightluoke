@@ -7,9 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -19,6 +17,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -124,26 +123,30 @@ public class Controller implements Initializable {
     }
     private void onBUttonCLick(Button btn,Label flag,TextField startTime,TextField endTime,Label consumptionTime,TextField otherCunsum,Label total,int price){
         if(btn.getText().equals("开始计费")){
-            startTime.setText(getCurrentTime());
-            endTime.setText(" ");
-            consumptionTime.setText(" ");
-            flag.setText("正在计费...");
-            flag.setStyle("-fx-background-color:red");
-            btn.setText("结束计费");
-            total.setText("0元");
-            otherCunsum.setText("");
+            if(confirDialog("张哥哥","是否开始计费?")){
+                startTime.setText(getCurrentTime());
+                endTime.setText(" ");
+                consumptionTime.setText(" ");
+                flag.setText("正在计费...");
+                flag.setStyle("-fx-background-color:red");
+                btn.setText("结束计费");
+                total.setText("0元");
+                otherCunsum.setText("");
+            }
         }else {
-            endTime.setText(getCurrentTime());
-            BigDecimal bd=getConsumptionTime(startTime,endTime);
-            String num=otherCunsum.getText();
-            if(num.equals(""))  num="0";
-            BigDecimal abs=bd.multiply(new BigDecimal(price));
-            BigDecimal totalMoney=abs.add(new BigDecimal(Integer.parseInt(num)));
-            total.setText(totalMoney.toString()+"元");
-            consumptionTime.setText(bd.toString()+"小时");
-            flag.setText("空闲中...");
-            flag.setStyle("-fx-background-color:greenyellow");
-            btn.setText("开始计费");
+            if(confirDialog("张哥哥","是否确认结帐?")){
+                endTime.setText(getCurrentTime());
+                BigDecimal bd=getConsumptionTime(startTime,endTime);
+                String num=otherCunsum.getText();
+                if(num.equals(""))  num="0";
+                BigDecimal abs=bd.multiply(new BigDecimal(price));
+                BigDecimal totalMoney=abs.add(new BigDecimal(Integer.parseInt(num)));
+                total.setText(totalMoney.toString()+"元");
+                consumptionTime.setText(bd.toString()+"小时");
+                flag.setText("空闲中...");
+                flag.setStyle("-fx-background-color:greenyellow");
+                btn.setText("开始计费");
+            }
         }
     }
     private String getCurrentTime(){
@@ -205,5 +208,18 @@ public class Controller implements Initializable {
         table3.setText("3号桌("+Utils.three+"元/小时)");
         table4.setText("4号桌("+Utils.four+"元/小时)");
         table5.setText("5号桌("+Utils.five+"元/小时)");
+    }
+    public boolean confirDialog(String header,String message){
+        Alert alert=new Alert(Alert.AlertType.CONFIRMATION,message,new ButtonType("是", ButtonBar.ButtonData.YES),
+                new ButtonType("否", ButtonBar.ButtonData.NO));
+        alert.setTitle("提示");
+        alert.setHeaderText(header);
+        Optional<ButtonType> buttonType=alert.showAndWait();
+        if(buttonType.get().getButtonData().equals(ButtonBar.ButtonData.YES)){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

@@ -13,7 +13,7 @@ public class Main extends Application {
         new Utils();
         Parent root = FXMLLoader.load(getClass().getResource("eightluoke.fxml"));
         primaryStage.setTitle("8洛克收费系统");
-        primaryStage.setScene(new Scene(root, 1500, 400));
+        primaryStage.setScene(new Scene(root, 1250, 400));
         primaryStage.show();
     }
 
