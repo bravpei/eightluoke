@@ -101,32 +101,60 @@ public class Controller implements Initializable {
     private Label total4;
     @FXML
     private Label total5;
+    private long start1;
+    private long start2;
+    private long start3;
+    private long start4;
+    private long start5;
     @FXML
     public void onButtonClick1(ActionEvent evet){
-        onBUttonCLick(btn1,flag1,startTime1,endTime1,consumptionTime1,otherCunsum1,total1,Utils.one);
+        onBUttonCLick(btn1,flag1,startTime1,endTime1,consumptionTime1,otherCunsum1,total1,Utils.one,1);
     }
     @FXML
     public void onButtonClick2(ActionEvent evet){
-        onBUttonCLick(btn2,flag2,startTime2,endTime2,consumptionTime2,otherCunsum2,total2,Utils.two);
+        onBUttonCLick(btn2,flag2,startTime2,endTime2,consumptionTime2,otherCunsum2,total2,Utils.two,2);
     }
     @FXML
     public void onButtonClick3(ActionEvent evet){
-        onBUttonCLick(btn3,flag3,startTime3,endTime3,consumptionTime3,otherCunsum3,total3,Utils.three);
+        onBUttonCLick(btn3,flag3,startTime3,endTime3,consumptionTime3,otherCunsum3,total3,Utils.three,3);
     }
     @FXML
     public void onButtonClick4(ActionEvent evet){
-        onBUttonCLick(btn4,flag4,startTime4,endTime4,consumptionTime4,otherCunsum4,total4,Utils.four);
+        onBUttonCLick(btn4,flag4,startTime4,endTime4,consumptionTime4,otherCunsum4,total4,Utils.four,4);
     }
     @FXML
     public void onButtonClick5(ActionEvent evet){
-        onBUttonCLick(btn5,flag5,startTime5,endTime5,consumptionTime5,otherCunsum5,total5,Utils.five);
+        onBUttonCLick(btn5,flag5,startTime5,endTime5,consumptionTime5,otherCunsum5,total5,Utils.five,5);
     }
-    private void onBUttonCLick(Button btn,Label flag,TextField startTime,TextField endTime,Label consumptionTime,TextField otherCunsum,Label total,int price){
+    private void onBUttonCLick(Button btn,Label flag,TextField startTime,TextField endTime,Label consumptionTime,TextField otherCunsum,Label total,int price,int btnNum){
+        SimpleDateFormat sdf=new SimpleDateFormat("HH:mm:ss");
         if(btn.getText().equals("开始计费")){
             if(confirDialog("张哥哥","是否开始计费?")){
-                startTime.setText(getCurrentTime());
-                endTime.setText(" ");
-                consumptionTime.setText(" ");
+                switch (btnNum){
+                    case 1:
+                        start1=System.currentTimeMillis();
+                        startTime.setText(sdf.format(start1));
+                        break;
+                    case 2:
+                        start2=System.currentTimeMillis();
+                        startTime.setText(sdf.format(start2));
+                        break;
+                    case 3:
+                        start3=System.currentTimeMillis();
+                        startTime.setText(sdf.format(start3));
+                        break;
+                    case 4:
+                        start4=System.currentTimeMillis();
+                        startTime.setText(sdf.format(start4));
+                        break;
+                    case 5:
+                        start5=System.currentTimeMillis();
+                        startTime.setText(sdf.format(start5));
+                        break;
+                    default:break;
+                }
+                endTime.setText("");
+                consumptionTime.setText("");
                 flag.setText("正在计费...");
                 flag.setStyle("-fx-background-color:red");
                 btn.setText("结束计费");
@@ -135,12 +163,20 @@ public class Controller implements Initializable {
             }
         }else {
             if(confirDialog("张哥哥","是否确认结帐?")){
-                endTime.setText(getCurrentTime());
-                BigDecimal bd=getConsumptionTime(startTime,endTime);
+                long end=System.currentTimeMillis();
+                endTime.setText(sdf.format(end));
+                BigDecimal bd = switch (btnNum) {
+                    case 1 -> getConsumptionTime(new BigDecimal(end - start1));
+                    case 2 -> getConsumptionTime(new BigDecimal(end - start2));
+                    case 3 -> getConsumptionTime(new BigDecimal(end - start3));
+                    case 4 -> getConsumptionTime(new BigDecimal(end - start4));
+                    case 5 -> getConsumptionTime(new BigDecimal(end - start5));
+                    default -> null;
+                };
                 String num=otherCunsum.getText();
                 if(num.equals(""))  num="0";
-                BigDecimal abs=bd.multiply(new BigDecimal(price));
-                BigDecimal totalMoney=abs.add(new BigDecimal(Integer.parseInt(num)));
+                assert bd != null;
+                BigDecimal totalMoney=new BigDecimal(Integer.parseInt(num)).add(bd.multiply(new BigDecimal(price)));
                 total.setText(totalMoney.toString()+"元");
                 consumptionTime.setText(bd.toString()+"小时");
                 flag.setText("空闲中...");
@@ -149,21 +185,8 @@ public class Controller implements Initializable {
             }
         }
     }
-    private String getCurrentTime(){
-        SimpleDateFormat sdf=new SimpleDateFormat("HH:mm:ss");
-        Long timemillis=System.currentTimeMillis();
-        return sdf.format(timemillis);
-    }
-    private BigDecimal getConsumptionTime(TextField startTime,TextField endTime){
-        SimpleDateFormat sdf=new SimpleDateFormat("HH:mm:ss");
-        Long consumptionTime=null;
-        try{
-           consumptionTime=sdf.parse(endTime.getText()).getTime()-sdf.parse(startTime.getText()).getTime();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        Double s=3600000.00;
-        return new BigDecimal(consumptionTime/s).setScale(2, RoundingMode.UP);
+    private BigDecimal getConsumptionTime(BigDecimal consumptionTime){
+        return consumptionTime.divide(new BigDecimal(3600000),2, RoundingMode.UP);
     }
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -215,11 +238,6 @@ public class Controller implements Initializable {
         alert.setTitle("提示");
         alert.setHeaderText(header);
         Optional<ButtonType> buttonType=alert.showAndWait();
-        if(buttonType.get().getButtonData().equals(ButtonBar.ButtonData.YES)){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return buttonType.get().getButtonData().equals(ButtonBar.ButtonData.YES);
     }
 }
