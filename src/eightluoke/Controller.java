@@ -168,19 +168,19 @@ public class Controller implements Initializable {
                 BigDecimal bd = null;
                 switch (btnNum) {
                     case 1 :
-                        getConsumptionTime(new BigDecimal(end - start1));
+                        bd=getConsumptionTime(new BigDecimal(end - start1));
                         break;
                     case 2 :
-                        getConsumptionTime(new BigDecimal(end - start2));
+                        bd=getConsumptionTime(new BigDecimal(end - start2));
                         break;
                     case 3 :
-                        getConsumptionTime(new BigDecimal(end - start3));
+                        bd=getConsumptionTime(new BigDecimal(end - start3));
                         break;
                     case 4 :
-                        getConsumptionTime(new BigDecimal(end - start4));
+                        bd=getConsumptionTime(new BigDecimal(end - start4));
                         break;
                     case 5 :
-                        getConsumptionTime(new BigDecimal(end - start5));
+                        bd=getConsumptionTime(new BigDecimal(end - start5));
                         break;
                     default: break;
                 };
