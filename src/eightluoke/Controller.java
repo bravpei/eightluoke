@@ -226,7 +226,9 @@ public class Controller implements Initializable {
     }
     @FXML
     public void newPage() throws IOException {
-        Parent edit = FXMLLoader.load(getClass().getResource("../../resource/edit.fxml"));
+        String path=System.getProperty("user.dir");
+        URL url=new URL("file:"+path+"/resource/edit.fxml");
+        Parent edit = FXMLLoader.load(url);
         Stage editStage = new Stage();
         editStage.setTitle("费率修改");
         //关闭最大化和最小化按键
