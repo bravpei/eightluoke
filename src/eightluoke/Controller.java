@@ -215,7 +215,7 @@ public class Controller implements Initializable {
     }
     @FXML
     public void newPage() throws IOException {
-        Parent edit = FXMLLoader.load(getClass().getResource("edit.fxml"));
+        Parent edit = FXMLLoader.load(getClass().getResource("../../resource/edit.fxml"));
         Stage editStage = new Stage();
         editStage.setTitle("费率修改");
         //关闭最大化和最小化按键
