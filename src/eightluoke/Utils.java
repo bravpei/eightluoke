@@ -24,10 +24,14 @@ public class Utils {
         File conf=new File("./eightluokeConfig");
         if(!conf.exists()){
             try {
-                conf.createNewFile();
-                FileWriter fw=new FileWriter(conf,true);
-                fileWrite(fw);
-                System.out.println("创建文件完毕");
+                if(conf.createNewFile()){
+                    FileWriter fw=new FileWriter(conf,true);
+                    fileWrite(fw);
+                    System.out.println("创建文件完毕.");
+                }else {
+                    System.out.println("创建文件失败!");
+                }
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
