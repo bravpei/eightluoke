@@ -26,16 +26,7 @@ public class Utils {
             try {
                 conf.createNewFile();
                 FileWriter fw=new FileWriter(conf,true);
-                fw.write(String.valueOf(one));
-                fw.write(System.lineSeparator());
-                fw.write(String.valueOf(two));
-                fw.write(System.lineSeparator());
-                fw.write(String.valueOf(three));
-                fw.write(System.lineSeparator());
-                fw.write(String.valueOf(four));
-                fw.write(System.lineSeparator());
-                fw.write(String.valueOf(five));
-                fw.close();
+                fileWrite(fw);
                 System.out.println("创建文件完毕");
             } catch (IOException e) {
                 e.printStackTrace();
@@ -62,27 +53,31 @@ public class Utils {
     }
     public static void setConfig(){
         File conf=new File("./eightluokeConfig");
-        FileWriter fw= null;
+        FileWriter fw;
         try {
             fw=new FileWriter(conf);
             fw.write("");
             fw.flush();
             fw.close();
             fw = new FileWriter(conf,true);
-            fw.write(String.valueOf(one));
-            fw.write(System.lineSeparator());
-            fw.write(String.valueOf(two));
-            fw.write(System.lineSeparator());
-            fw.write(String.valueOf(three));
-            fw.write(System.lineSeparator());
-            fw.write(String.valueOf(four));
-            fw.write(System.lineSeparator());
-            fw.write(String.valueOf(five));
-            fw.close();
+            fileWrite(fw);
             System.out.println("更新文件完毕");
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void fileWrite(FileWriter fw) throws IOException {
+        fw.write(String.valueOf(one));
+        fw.write(System.lineSeparator());
+        fw.write(String.valueOf(two));
+        fw.write(System.lineSeparator());
+        fw.write(String.valueOf(three));
+        fw.write(System.lineSeparator());
+        fw.write(String.valueOf(four));
+        fw.write(System.lineSeparator());
+        fw.write(String.valueOf(five));
+        fw.close();
     }
 
 }

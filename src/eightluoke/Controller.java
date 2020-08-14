@@ -183,7 +183,7 @@ public class Controller implements Initializable {
                         bd=getConsumptionTime(new BigDecimal(end - start5));
                         break;
                     default: break;
-                };
+                }
                 String num=otherCunsum.getText();
                 if(num.equals(""))  num="0";
                 assert bd != null;
