@@ -10,9 +10,8 @@ public class Utils {
     public static int three=0;
     public static int four=0;
     public static int five=0;
-    public  Utils(){
-        config();
-    }
+    private static Utils instance=new Utils();
+    public static Utils getInstance(){return instance;}
     public static void numOnly(TextField textField){
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {

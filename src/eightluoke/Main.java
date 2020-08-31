@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        new Utils();
+        Utils.getInstance().config();
         Parent root = FXMLLoader.load(getClass().getResource("eightluoke.fxml"));
         primaryStage.setTitle("8洛克收费系统");
         primaryStage.setScene(new Scene(root, 1250, 400));
